@@ -1,9 +1,14 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { BsCart } from "react-icons/bs";
 import { FaUserAstronaut } from "react-icons/fa6";
+import { Layout } from "../Layout";
+import { useContext } from "react";
+import { AppContext } from "../../Context";
 
 export function NavBar(){
   const activeStyle = 'underline underline-offset-4';
+  const { productsInCart } = useContext(AppContext);
+
   return (
     <>
       <nav className='flex justify-between flex-wrap items-center py-3 px-2 bg-slate-900 text-indigo-200 text-sm'>
@@ -35,7 +40,7 @@ export function NavBar(){
               to={'/Toys'}
               className={({isActive}) => isActive ? activeStyle : ''}
             >
-              Toys 
+              Jewelery 
             </NavLink>
           </li>
           <li>
@@ -43,7 +48,7 @@ export function NavBar(){
               to={'/clothes'}
               className={({isActive}) => isActive ? activeStyle : ''}
             >
-              Clothes 
+              {`Men's clothing `}
             </NavLink>
           </li>
           <li>
@@ -51,15 +56,7 @@ export function NavBar(){
               to={'/furnitures'}
               className={({isActive}) => isActive ? activeStyle : ''}
             >
-              Furnitures 
-            </NavLink>
-          </li>
-          <li>
-            <NavLink 
-              to={'/others'}
-              className={({isActive}) => isActive ? activeStyle : ''}
-            >
-              Others 
+              {`"women's clothing"`} 
             </NavLink>
           </li>
         </ul>
@@ -96,14 +93,14 @@ export function NavBar(){
             </NavLink>
           </li>
           <li className='flex items-center gap-1 ml-3'>
-            <BsCart /> 0
+            <BsCart /> {productsInCart.length}
           </li>
         </ul>
       </nav>
       
-      <section className="flex flex-col mt-8 items-center">
+      <Layout>
         <Outlet />
-      </section>
+      </Layout>
     </>
   );
 }
