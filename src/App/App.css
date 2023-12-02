@@ -7,4 +7,18 @@ body
   height: 100vh;
   background-color: #0f172a;
   color: #c7d2fe;
+  scrollbar-width: 5px;
+  scrollbar-color: rgba(0,0,0,0.8);
+}
+
+body::-webkit-scrollbar{
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track{
+  background: rgba(0, 0, 0, 0);
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: rgba(0,0,0,0.8);
 }

@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import { useContext } from "react";
 import { AppContext } from "../../Context";
 import { ProductDetails } from "../../Components/ProductDetails";
+import styles from './styles.module.css';
 
 export function Home(){
   const { productDetails } = useContext(AppContext);
@@ -34,9 +35,9 @@ export function Home(){
   }, []);
 
   return (
-    <div>
+    <div className="w-full">
       <p className="text-center text-xl font-semibold mb-5 text-orange-600">Home</p>
-      <section className="flex justify-center gap-5 flex-wrap mb-10 max-w-screen-xl">
+      <section className={styles.grid}>
         {
           products?.map(product => (
             <Card

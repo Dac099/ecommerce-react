@@ -7,7 +7,7 @@ export const Card = ({product}) => {
 
   return (
     <article 
-      className="cursor-pointer rounded-lg w-72 h-80 relative overflow-hidden"
+      className="cursor-pointer rounded-lg w-full h-72 relative overflow-hidden"
       onMouseEnter={() => setShowDetails(true)}
       onMouseLeave={() => setShowDetails(false)}
       >
