@@ -4,10 +4,16 @@ import { FaUserAstronaut } from "react-icons/fa6";
 import { Layout } from "../Layout";
 import { useContext } from "react";
 import { AppContext } from "../../Context";
+import { createPortal } from "react-dom";
+import { ShoppingCart } from "../ShoppingCart";
 
 export function NavBar(){
   const activeStyle = 'underline underline-offset-4';
-  const { productsInCart } = useContext(AppContext);
+  const { 
+    productsInCart, 
+    setShowProductsInCart, 
+    showProductsInCart 
+  } = useContext(AppContext);
 
   return (
     <>
@@ -93,7 +99,14 @@ export function NavBar(){
             </NavLink>
           </li>
           <li className='flex items-center gap-1 ml-3'>
-            <BsCart /> {productsInCart.length}
+            <BsCart 
+              onClick={() => {
+              setShowProductsInCart(!showProductsInCart);
+              }}
+              className="hover:cursor-pointer"
+            /> 
+            
+            {productsInCart.length}
           </li>
         </ul>
       </nav>
@@ -101,6 +114,13 @@ export function NavBar(){
       <Layout>
         <Outlet />
       </Layout>
+
+      {
+        createPortal(
+          <ShoppingCart/>,
+          document.getElementById('details')
+        )
+      }
     </>
   );
 }
