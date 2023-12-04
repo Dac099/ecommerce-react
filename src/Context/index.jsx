@@ -14,6 +14,11 @@ export const AppContextProvider = ({children}) => {
     setProductsInCart(products);
   }
 
+  const deleteProductInCart = (product_id) => {
+    const products = [...productsInCart];
+    setProductsInCart(products.filter(product => product.id !== product_id));
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -23,6 +28,7 @@ export const AppContextProvider = ({children}) => {
         setProductDetails,
         showProductsInCart,
         setShowProductsInCart,
+        deleteProductInCart
       }}
     >
       {children}

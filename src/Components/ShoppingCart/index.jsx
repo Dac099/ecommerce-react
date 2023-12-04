@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../../Context";
 import { TbMoodSadFilled } from "react-icons/tb";
 import { ProductCart } from "../ProductCart";
+import styles from './styles.module.css';
 
 export const ShoppingCart = () => {
   const {
@@ -13,7 +14,7 @@ export const ShoppingCart = () => {
 
   return (
     <aside
-      className={`fixed z-10 top-14 w-1/3 h-screen rounded-lg p-2 backdrop-blur-md bg-black/50 transition-all duration-200 ${showProductsInCart ? 'right-0' : '-right-full'}`}
+      className={`fixed z-10 top-14 w-1/3 h-screen rounded-lg p-2 backdrop-blur-md bg-black/50 transition-all duration-200 ${showProductsInCart ? 'right-0' : '-right-full'} overflow-y-auto pb-20`}
     >
       <section className="flex justify-between items-center px-2">
         <p 
@@ -24,7 +25,7 @@ export const ShoppingCart = () => {
 
         <button 
           type="button"
-          className="text-orange-300 font-bold text-xl w-20 h-10 rounded-md hover:bg-orange-300 hover:text-orange-900"
+          className="text-orange-300 font-bold text-xl w-10 h-10 rounded-md text-right"
           onClick={() => {
             setShowProductsInCart(false);
           }}
